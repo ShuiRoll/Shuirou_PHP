@@ -19,7 +19,7 @@ $result = mysqli_query($conn, "SELECT * FROM clients ORDER BY client_id DESC");
  
 <table>
   <tr>
-    <th>ID</th><th>Name</th><th>Email</th><th>Phone</th><th>Action</th>
+    <th>ID</th><th>Name</th><th>Email</th><th>Phone</th><th>Address</th><th>Action</th>
   </tr>
   <?php while($row = mysqli_fetch_assoc($result)) { ?>
     <tr>
@@ -27,6 +27,7 @@ $result = mysqli_query($conn, "SELECT * FROM clients ORDER BY client_id DESC");
       <td><?php echo $row['full_name']; ?></td>
       <td><?php echo $row['email']; ?></td>
       <td><?php echo $row['phone']; ?></td>
+      <td><?php echo $row['address']; ?></td>
       <td>
         <a href="clients_edit.php?id=<?php echo $row['client_id']; ?>">Edit</a>
       </td>
