@@ -241,6 +241,7 @@ form {
     border-radius: var(--radius-lg);
     box-shadow: var(--shadow-md);
     max-width: 500px;
+    margin: 0 auto;
 }
 
 label {
