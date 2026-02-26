@@ -32,23 +32,23 @@ if (isset($_POST['update'])) {
 <?php include dirname(__DIR__) . "/nav.php"; ?>
  
 <h2>Edit Service</h2>
- 
+
 <form method="post">
-  <label>Service Name</label><br>
-  <input type="text" name="service_name" value="<?php echo $service['service_name']; ?>"><br><br>
- 
-  <label>Description</label><br>
-  <textarea name="description" rows="4" cols="40"><?php echo $service['description']; ?></textarea><br><br>
- 
-  <label>Hourly Rate</label><br>
-  <input type="text" name="hourly_rate" value="<?php echo $service['hourly_rate']; ?>"><br><br>
- 
-  <label>Active</label><br>
+  <label>Service Name</label>
+  <input type="text" name="service_name" value="<?php echo $service['service_name']; ?>">
+
+  <label>Description</label>
+  <textarea name="description"><?php echo $service['description']; ?></textarea>
+
+  <label>Hourly Rate</label>
+  <input type="text" name="hourly_rate" value="<?php echo $service['hourly_rate']; ?>">
+
+  <label>Active</label>
   <select name="is_active">
     <option value="1" <?php if($service['is_active']==1) echo "selected"; ?>>Yes</option>
     <option value="0" <?php if($service['is_active']==0) echo "selected"; ?>>No</option>
-  </select><br><br>
- 
+  </select>
+
   <button type="submit" name="update">Update</button>
 </form>
 </div>

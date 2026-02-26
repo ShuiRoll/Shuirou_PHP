@@ -31,6 +31,9 @@ body {
     margin: 0;
     padding: 20px;
     line-height: 1.6;
+    max-width: 1100px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .container {
@@ -39,7 +42,6 @@ body {
     padding: 0 15px;
 }
 
-/* Page Title */
 h2 {
     font-size: 1.75rem;
     font-weight: 600;
@@ -49,7 +51,14 @@ h2 {
     border-bottom: 2px solid var(--border-color);
 }
 
-/* Navigation Styling */
+h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--text-color);
+    margin-top: 28px;
+    margin-bottom: 16px;
+}
+
 .nav-container {
     background: var(--card-bg);
     padding: 12px 20px;
@@ -79,15 +88,55 @@ h2 {
 }
 
 hr {
-    display: none;
+    border: none;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--border-color), transparent);
+    margin: 32px 0;
 }
 
-/* Dashboard Grid */
-.stats-grid {
+/* Side by side layout */
+.side-by-side {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    align-items: start;
+}
+
+.side-by-side h3 {
+    margin-top: 0;
+}
+
+.side-by-side form {
+    margin: 0;
+    max-width: none;
+}
+
+@media (max-width: 900px) {
+    .side-by-side {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+.stats-grid,
+.payment-info {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
     gap: 24px;
     margin-bottom: 32px;
+}
+
+.payment-info {
+    grid-template-columns: repeat(3, 1fr);
+    max-width: 700px;
+}
+
+.payment-info .card {
+    padding: 20px;
+}
+
+.payment-info .card .value {
+    font-size: 1.75rem;
 }
 
 .card {
@@ -121,7 +170,7 @@ hr {
     color: var(--primary-color);
 }
 
-/* Action Links Section */
+
 .actions {
     background: linear-gradient(135deg, #E2D9F6 0%, #BBBFE3 100%);
     padding: 20px 24px;
@@ -135,7 +184,7 @@ hr {
     color: var(--text-color);
 }
 
-/* Buttons */
+
 .btn {
     display: inline-block;
     background: var(--primary-color);
@@ -184,7 +233,7 @@ hr {
     color: white;
 }
 
-/* Tables */
+
 table {
     width: 100%;
     border-collapse: collapse;
@@ -193,6 +242,7 @@ table {
     overflow: hidden;
     box-shadow: var(--shadow-md);
     margin-top: 16px;
+    border: none !important;
 }
 
 table th {
@@ -202,18 +252,20 @@ table th {
     text-transform: uppercase;
     font-size: 0.8rem;
     letter-spacing: 0.05em;
-    padding: 16px;
+    padding: 16px !important;
     text-align: left;
+    border: none !important;
 }
 
 table td {
-    padding: 14px 16px;
-    border-bottom: 1px solid var(--border-color);
+    padding: 14px 16px !important;
+    border: none !important;
+    border-bottom: 1px solid var(--border-color) !important;
     font-size: 0.95rem;
 }
 
 table tr:last-child td {
-    border-bottom: none;
+    border-bottom: none !important;
 }
 
 table tr:hover {
@@ -234,7 +286,7 @@ table td a:hover {
     color: white;
 }
 
-/* Forms */
+/* Form styling */
 form {
     background: var(--card-bg);
     padding: 32px;
@@ -303,7 +355,7 @@ button[type="submit"]:hover {
     box-shadow: var(--shadow-md);
 }
 
-/* Messages */
+
 .message,
 p[style*="color:red"],
 p[style*="color: red"] {
@@ -311,6 +363,18 @@ p[style*="color: red"] {
     border-radius: var(--radius-sm);
     margin-bottom: 20px;
     font-weight: 500;
+    background: #fef2f2;
+    border: 1px solid #fecaca;
+}
+
+p[style*="color:green"],
+p[style*="color: green"] {
+    padding: 12px 16px;
+    border-radius: var(--radius-sm);
+    margin-bottom: 20px;
+    font-weight: 500;
+    background: #f0fdf4;
+    border: 1px solid #bbf7d0;
 }
 
 .message-error {
@@ -321,12 +385,14 @@ p[style*="color: red"] {
 
 .message-success {
     background: #f0fdf4;
-    color: var(--success-color);
+    color: #22c55e;
     border: 1px solid #bbf7d0;
 }
 
-/* Add Link Button Style */
-p a[href*="add"] {
+
+p a[href*="add"],
+p a[href*="create"],
+p a[href*="Create"] {
     display: inline-block;
     background: #AA87EA;
     color: white;
@@ -337,12 +403,14 @@ p a[href*="add"] {
     transition: all 0.2s ease;
 }
 
-p a[href*="add"]:hover {
+p a[href*="add"]:hover,
+p a[href*="create"]:hover,
+p a[href*="Create"]:hover {
     background: #662EC8;
     transform: translateY(-2px);
 }
 
-/* Responsive Design */
+
 @media (max-width: 768px) {
     body {
         padding: 12px;
