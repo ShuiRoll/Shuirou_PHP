@@ -18,6 +18,18 @@ if (isset($_POST['update'])) {
   header("Location: services_list.php");
   exit;
 }
+
+if (isset($_POST['deactivate'])) {
+  mysqli_query($conn, "UPDATE services SET is_active=0 WHERE service_id=$id");
+  header("Location: services_list.php");
+  exit;
+}
+
+if (isset($_POST['activate'])) {
+  mysqli_query($conn, "UPDATE services SET is_active=1 WHERE service_id=$id");
+  header("Location: services_list.php");
+  exit;
+}
 ?>
 <!doctype html>
 <html>
@@ -43,13 +55,16 @@ if (isset($_POST['update'])) {
   <label>Hourly Rate</label>
   <input type="text" name="hourly_rate" value="<?php echo $service['hourly_rate']; ?>">
 
-  <label>Active</label>
-  <select name="is_active">
-    <option value="1" <?php if($service['is_active']==1) echo "selected"; ?>>Yes</option>
-    <option value="0" <?php if($service['is_active']==0) echo "selected"; ?>>No</option>
-  </select>
+  <input type="hidden" name="is_active" value="<?php echo $service['is_active']; ?>">
 
-  <button type="submit" name="update">Update</button>
+  <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 10px;">
+    <button type="submit" name="update">Update</button>
+    <?php if ($service['is_active'] == 1) { ?>
+      <button type="submit" name="deactivate" onclick="return confirm('Deactivate this service?')" style="background-color: #dc3545; color: white;">Deactivate</button>
+    <?php } else { ?>
+      <button type="submit" name="activate" onclick="return confirm('Activate this service?')" style="background-color: #28a745; color: white;">Activate</button>
+    <?php } ?>
+  </div>
 </form>
 </div>
 </body>
