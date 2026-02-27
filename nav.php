@@ -5,4 +5,6 @@
   <a href="/assessment_beginner/pages/bookings_list.php">Bookings</a>
   <a href="/assessment_beginner/pages/tools_list_assign.php">Tools</a>
   <a href="/assessment_beginner/pages/payments_list.php">Payments</a>
+  <span class="nav-spacer"></span>
+  <a href="/assessment_beginner/logout.php" class="nav-logout">Logout</a>
 </div>

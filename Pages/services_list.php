@@ -1,5 +1,18 @@
 <?php
 include dirname(__DIR__) . "/db.php";
+
+if (isset($_GET['delete_id'])) {
+  $delete_id = $_GET['delete_id'];
+ 
+ 
+  // Soft delete (set is_active to 0)
+  mysqli_query($conn, "UPDATE services SET is_active=0 WHERE service_id=$delete_id");
+ 
+ 
+  header("Location: services_list.php");
+  exit;
+}
+
 $result = mysqli_query($conn, "SELECT * FROM services ORDER BY service_id DESC");
 ?>
 <!doctype html>
@@ -15,6 +28,7 @@ $result = mysqli_query($conn, "SELECT * FROM services ORDER BY service_id DESC")
 <?php include dirname(__DIR__) . "/nav.php"; ?>
  
 <h2>Services</h2>
+<p><a href="services_add.php">+ Add Service</a></p>
  
 <table>
   <tr>
